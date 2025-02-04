@@ -14,7 +14,7 @@ body {
 .music-note {
     display: inline-block;
     font-size: 1.5em;
-    margin: 5px;
+    margin-top: 5px;
     animation: float 3s infinite ease-in-out;
 }
 
@@ -173,3 +173,25 @@ h2 {
 
 
 
+/* Center the Back Button */
+#back-to-main {
+    background: linear-gradient(135deg, #260431, #441A44);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    margin: 20px auto;
+    display: block;
+  }
+  
+  #back-to-main:hover {
+    background: linear-gradient(135deg, #441A44, #5E3065);
+    box-shadow: 0 6px 14px rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+  }
+  
