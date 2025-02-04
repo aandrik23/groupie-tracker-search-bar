@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artists</title>
+    <link rel="stylesheet" href="/css/Main_page.css">
+    <script src="/JavaScript/script.js" defer></script>
+    
+</head>
+<body>
+
+    <h1 align="center">Artists</h1>
+    <!-- Search Bar -->
+    <div class="search-container" align="center">
+        <input id="search-bar" type="text" placeholder="Search for artists, members, locations, etc..." oninput="searchArtists()">
+        <div id="search-suggestions" class="dropdown-menu"></div>
+      </div>
+      
+
+    <!-- Container for all artists -->
+    <div class="artist-container">   
+        {{range .}}
+        <div class="artist-card">
+            <a href="/artist?id={{.ID}}">
+                <img src="{{.Image}}" alt="{{.Name}}">
+                <h2>{{.Name}}</h2>
+            </a>
+        </div>
+        {{end}}
+    </div>
+
+</body>
+</html>
