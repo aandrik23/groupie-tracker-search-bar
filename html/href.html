@@ -9,22 +9,24 @@
        
 </head>
 
-<body align = "center">
-    <span class="music-note">🎵</span>
-    <span class="music-note">🎷</span>
-    <span class="music-note">🎺</span>
-    <span class="music-note">🎶</span>
-    <span class="music-note">🎹</span>
-    <span class="music-note">🎧</span>
-    <span class="music-note">🎻</span>
-    <span class="music-note">🎸</span>
-
-    <button  id="back-to-main" onclick="window.location.href='/'">Return to Main Page</button>
-   
-
-
-
-    <h1>{{.Name}}</h1>
+<body >
+    
+    <div class="header-container">
+        <div class="music-notes">
+            <span class="music-note">🎵</span>
+            <span class="music-note">🎷</span>
+            <span class="music-note">🎺</span>
+            <span class="music-note">🎶</span>
+            <span class="music-note">🎹</span>
+            <span class="music-note">🎧</span>
+            <span class="music-note">🎻</span>
+            <span class="music-note">🎸</span>
+        </div>
+    
+        <h1>{{.Name}}</h1>
+    
+        <button id="back-to-main" onclick="window.location.href='/'">Return to Main Page</button>
+    </div>
     <img src="{{.Image}}" alt="{{.Name}}" />
     <p><strong>Members:</strong> {{range .Members}}{{.}}, {{end}}</p>
     <p><strong>Creation Date:</strong> {{.CreationDate}}</p>

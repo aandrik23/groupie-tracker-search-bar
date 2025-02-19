@@ -4,42 +4,86 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 10px;
     background: linear-gradient(135deg, #000000 0%, #190420 100%);
     color: #dde9ff;
     text-align: center;
 }
-
-/* Music notes animation */
-.music-note {
-    display: inline-block;
-    font-size: 1.5em;
-    margin-top: 5px;
-    animation: float 3s infinite ease-in-out;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-/* Header styling */
-h1 {
-    font-size: 3em;
-    color: #f4eced;
-    text-shadow: 2px 2px 4px rgb(0, 81, 255);
-    font-weight: bold;
+.header-container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
     border-bottom: 4px solid rgba(46, 41, 41, 0.742);
     padding-bottom: 10px;
-   
 }
+
+/* Center the H1 */
+.header-container h1 {
+    font-size: 3em;
+    color: #f4eced;
+    text-shadow: 2px 2px 4px rgb(138, 39, 135);
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 2rem;
+    position: relative;
+    display: inline-block; /* Ensures it only takes the space it needs */
+}
+
+/* Music notes positioned absolutely on the left */
+.music-notes {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 5px; /* Adds space between notes */
+}
+
+/* Individual music notes styling */
+.music-note {
+    font-size: 24px;
+    animation: float 3s infinite ease-in-out alternate;
+}
+
+/* Floating effect for the notes */
+@keyframes float {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+/* Return button positioned absolutely on the right */
+#back-to-main {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #741e73;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#back-to-main:hover {
+    background-color: #831f9c;
+    font-size: 3em;
+    color: #f4eced;
+    text-shadow: 2px 2px 4px rgb(33, 10, 32);
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 2rem;
+}
+
     
 /* Artist image */
 img {
@@ -171,27 +215,3 @@ h2 {
 }
 
 
-
-
-/* Center the Back Button */
-#back-to-main {
-    background: linear-gradient(135deg, #260431, #441A44);
-    color: #ffffff;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease;
-    margin: 20px auto;
-    display: block;
-  }
-  
-  #back-to-main:hover {
-    background: linear-gradient(135deg, #441A44, #5E3065);
-    box-shadow: 0 6px 14px rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
-  }
-  

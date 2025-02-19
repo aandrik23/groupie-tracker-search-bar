@@ -130,7 +130,7 @@ h1 {
     max-height: 250px; /* Limit max height of dropdown */
     overflow-y: auto; /* Enable scrolling */
     background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent background */
-    color: #ffffff;
+    color: #c780c5;
     border-radius: 8px;
     box-shadow: 0 8px 16px rgba(98, 16, 105, 0.5);
     display: none; /* Hidden by default */
