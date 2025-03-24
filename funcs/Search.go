@@ -3,6 +3,8 @@ package groupie_tracker_search
 import (
 	"encoding/json"
 	"net/http"
+	"sort"
+	"strconv"
 	"strings"
 )
 
@@ -23,16 +25,21 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 				"id":   artist.ID, // Add the ID
 				"name": artist.Name,
 				"type": "artist/band",
+				"Prio": 100,
 			})
 		}
 
 		// Search for members
 		for _, member := range artist.Members {
 			if strings.Contains(strings.ToLower(member), query) {
+				if member == artist.Name && len(artist.Members) == 1 {
+					continue
+				}
 				results = append(results, map[string]interface{}{
 					"id":   artist.ID, // Link to artist ID
 					"name": member,
 					"type": "member - " + artist.Name,
+					"Prio": 90,
 				})
 			}
 		}
@@ -44,6 +51,7 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 					"id":   artist.ID, // Link to artist ID
 					"name": location,
 					"type": "location - " + artist.Name,
+					"Prio": 80,
 				})
 			}
 		}
@@ -54,7 +62,8 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 				results = append(results, map[string]interface{}{
 					"id":   artist.ID, // Link to artist ID
 					"name": date,
-					"type": "date - " + artist.Name,
+					"type": "concert's date - " + artist.Name,
+					"Prio": 70,
 				})
 			}
 		}
@@ -65,18 +74,25 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 				"id":   artist.ID, // Link to artist ID
 				"name": artist.FirstAlbum,
 				"type": "first album date - " + artist.Name,
+				"Prio": 60,
 			})
 		}
 
 		// Search for creation date
-		if strings.Contains(strings.ToLower(string(artist.CreationDate)), query) {
+		if strings.Contains(strings.ToLower(strconv.Itoa(artist.CreationDate)), query) {
 			results = append(results, map[string]interface{}{
 				"id":   artist.ID, // Link to artist ID
-				"name": string(artist.CreationDate),
-				"type": "creation date - " + artist.Name,
+				"name": strconv.Itoa(artist.CreationDate),
+				"type": "Creation Date: " + artist.Name,
+				"Prio": 50,
 			})
+
 		}
 	}
+
+	sort.Slice(results, func(i, j int) bool {
+		return results[i]["Prio"].(int) > results[j]["Prio"].(int)
+	})
 
 	// If no results found
 	if len(results) == 0 {

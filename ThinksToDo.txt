@@ -1,0 +1,6 @@
+When an artist/band has just one member , show only the name of artist/band
+OK 
+
+Priorities
+
+london-uk ?
