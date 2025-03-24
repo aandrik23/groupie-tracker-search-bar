@@ -32,7 +32,7 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 				results = append(results, map[string]interface{}{
 					"id":   artist.ID, // Link to artist ID
 					"name": member,
-					"type": "member",
+					"type": "member - " + artist.Name,
 				})
 			}
 		}
@@ -43,7 +43,7 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 				results = append(results, map[string]interface{}{
 					"id":   artist.ID, // Link to artist ID
 					"name": location,
-					"type": "location",
+					"type": "location - " + artist.Name,
 				})
 			}
 		}
@@ -54,7 +54,7 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 				results = append(results, map[string]interface{}{
 					"id":   artist.ID, // Link to artist ID
 					"name": date,
-					"type": "date",
+					"type": "date - " + artist.Name,
 				})
 			}
 		}
@@ -64,7 +64,7 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 			results = append(results, map[string]interface{}{
 				"id":   artist.ID, // Link to artist ID
 				"name": artist.FirstAlbum,
-				"type": "first album date",
+				"type": "first album date - " + artist.Name,
 			})
 		}
 
@@ -73,7 +73,7 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 			results = append(results, map[string]interface{}{
 				"id":   artist.ID, // Link to artist ID
 				"name": string(artist.CreationDate),
-				"type": "creation date",
+				"type": "creation date - " + artist.Name,
 			})
 		}
 	}
