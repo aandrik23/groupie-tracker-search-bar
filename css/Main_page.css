@@ -111,6 +111,7 @@ h1 {
     width: 100%;
     text-align: center;
     margin-bottom: 30px;
+    display: inline-block;
 }
 
 #search-bar {
@@ -122,6 +123,7 @@ h1 {
     margin-bottom: 10px;
 }
 
+
 .dropdown-menu {
     position: absolute;
     top: 100%; /* Drop below the search bar */
@@ -129,7 +131,7 @@ h1 {
     width: 100%;
     max-height: 250px; /* Limit max height of dropdown */
     overflow-y: auto; /* Enable scrolling */
-    background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent background */
+    background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent background */
     color: #c780c5;
     border-radius: 8px;
     box-shadow: 0 8px 16px rgba(98, 16, 105, 0.5);
