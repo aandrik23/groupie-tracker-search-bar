@@ -123,6 +123,14 @@ h1 {
     margin-bottom: 10px;
 }
 
+#clearButton {
+    padding: 10px 20px;
+    background-color: #491c56;
+    color: rgb(245, 244, 244);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
 .dropdown-menu {
     position: absolute;

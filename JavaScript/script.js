@@ -1,10 +1,36 @@
+// Function to clear the search bar and reset filtering
+function clearSearchBar() {
+  // Get the search input element
+  const searchBar = document.getElementById('search-bar');
+  
+  // Clear the input value
+  searchBar.value = '';
+
+  // Reset the search suggestions dropdown
+  const dropdownMenu = document.getElementById('search-suggestions');
+  dropdownMenu.innerHTML = '';
+  dropdownMenu.style.display = 'none';
+
+  // Reset the artist cards display
+  const artistCards = document.querySelectorAll('.artist-card');
+  artistCards.forEach(card => {
+      card.style.display = 'block'; // Show all artist cards
+  });
+}
+
+// Existing search function
 async function searchArtists() {
   const query = document.getElementById('search-bar').value;
   const dropdownMenu = document.getElementById('search-suggestions');
 
+  // If the query is empty, hide the dropdown and reset artist cards
   if (!query.trim()) {
       dropdownMenu.innerHTML = '';
       dropdownMenu.style.display = 'none';
+      const artistCards = document.querySelectorAll('.artist-card');
+      artistCards.forEach(card => {
+          card.style.display = 'block'; // Show all artist cards when no search query
+      });
       return;
   }
 
@@ -19,7 +45,7 @@ async function searchArtists() {
           results.forEach(result => {
               const listItem = document.createElement('div');
               listItem.classList.add('result-item');
-              listItem.textContent = result.name;
+              listItem.textContent = result.name + " - " + result.type;
               listItem.onclick = () => {
                   window.location.href = `/artist?id=${result.id}`;
               };
@@ -34,21 +60,34 @@ async function searchArtists() {
   }
 }
 
-// Event listener for "Filter Cards" button
+// Filter artist cards as user types
 document.addEventListener("DOMContentLoaded", function () {
-  const searchBar = document.getElementById('search-bar');
+  const searchBar = document.getElementById("search-bar");
 
-  // Filter artist cards as user types
-  searchBar.addEventListener('input', () => {
+  searchBar.addEventListener("input", () => {
       const query = searchBar.value.toLowerCase();
-      const artistCards = document.querySelectorAll('.artist-card');
+      const artistCards = document.querySelectorAll(".artist-card");
+      let anyMatch = false; // ✅ Fixed: Now properly declared
 
       artistCards.forEach(card => {
-          const artistName = card.querySelector('h2').textContent.toLowerCase();
-          card.style.display = artistName.includes(query) ? 'block' : 'none';
+          const artistName = card.querySelector("h2").textContent.toLowerCase();
+          if (artistName.includes(query)) {
+              card.style.display = "block";
+              anyMatch = true; // ✅ Track if at least one match is found
+          } else {
+              card.style.display = "none";
+          }
       });
+
+      // ✅ If no match is found, show all cards again
+      if (!anyMatch) {
+          artistCards.forEach(card => {
+              card.style.display = "block";
+          });
+      }
   });
 });
+
 
 // Hide dropdown if clicked outside
 document.addEventListener('click', (event) => {
