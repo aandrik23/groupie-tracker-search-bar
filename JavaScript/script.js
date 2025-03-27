@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
   searchBar.addEventListener("input", () => {
       const query = searchBar.value.toLowerCase();
       const artistCards = document.querySelectorAll(".artist-card");
-      let anyMatch = false; // ✅ Fixed: Now properly declared
+      let anyMatch = false; 
 
       artistCards.forEach(card => {
           const artistName = card.querySelector("h2").textContent.toLowerCase();

@@ -90,7 +90,13 @@ func SearchHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	sort.Slice(results, func(i, j int) bool {
+	//  Sort by "Name" (Alphabetical)
+	sort.SliceStable(results, func(i, j int) bool {
+		return strings.ToLower(results[i]["name"].(string)) < strings.ToLower(results[j]["name"].(string))
+	})
+
+	//  Sort by "Prio" (descending)
+	sort.SliceStable(results, func(i, j int) bool {
 		return results[i]["Prio"].(int) > results[j]["Prio"].(int)
 	})
 
